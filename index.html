@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div id="menu">
+    <div class="title">Mock-Up Viewer</div>
+    <a onclick="toggleView('phone')">Phone</a>
+    <a onclick="toggleView('tab')">Tablet</a>
+    <a onclick="toggleView('desk')">Desktop</a>
+    <a onclick="">refresh</a>
+</div>
+
+<div class="view-wrapper">
+    <iframe id="view" class="phone" src="dist/test.html"></iframe>
+</div>
+
+
+
+<style>
+    html{
+        height: 100%;
+    }
+    body{
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        height: 100%;
+        background-color: lightgrey;
+        overflow: hidden;
+    }
+
+    #menu{
+        display: flex;
+        flex-direction: row;
+        height: 60px;
+    }
+
+    #menu a{
+        cursor: pointer;
+        padding: 8px 24px;
+        background-color: whitesmoke;
+        margin: 0 8px;
+    }
+    #menu .title{
+        padding: 8px;
+    }
+
+    #menu:after {
+        content: '';
+        position: absolute;
+        display: block;
+        height: 8px;
+        width: 100%;
+        background: #d3d300;
+        background: repeating-linear-gradient(-45deg, #d3d300, #d3d300 12px, black 10px, black 23px);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-bottom: 0;
+    }
+
+    #view {
+        margin: auto;
+        background-color: white;
+        height: 667px;
+        width: 375px;
+        transition: all 0.3s ease-out;
+        border: 0;
+    }
+
+    #view.phone{
+        border: 10px solid gray;
+        border-bottom-width: 20px;
+        border-top-width: 20px;
+        border-radius: 30px;
+        margin-top: 30px;
+    }
+
+    #view.tablet{
+        border: 40px solid gray;
+        border-bottom-width: 70px;
+        border-top-width: 70px;
+        border-radius: 30px;
+        margin-top: 10px;
+    }
+
+    .view-wrapper{
+        width: 100%;
+        height: calc(100% - 61px);
+        overflow-y: auto;
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<script>
+    var lastChoice = "phone";
+
+    function toggleView(view) {
+        if(lastChoice != view){
+            switch (view) {
+                case 'phone':
+                    $('#view').animate({
+                        height: '667px',
+                        width: '375px'
+                    });
+                    $('#view').removeClass();
+                    $('#view').addClass('phone');
+                    lastChoice = 'phone';
+                    break;
+                case 'tab':
+                    $('#view').animate({
+                        height: '1024px',
+                        width: '786px'
+                    });
+                    $('#view').removeClass();
+                    $('#view').addClass('tablet');
+                    lastChoice = 'tablet';
+                    break;
+                case 'desk':
+                    $('#view').animate({
+                        height: '100%',
+                        width: '100%',
+                    });
+                    $('#view').removeClass();
+                    lastChoice = 'desk';
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
