@@ -6,15 +6,16 @@
             src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
 <body>
 
 <div id="menu">
     <div class="title">Mock-Up Viewer</div>
-    <a onclick="toggleView('phone')">Phone</a>
-    <a onclick="toggleView('tab')">Tablet</a>
-    <a onclick="toggleView('desk')">Desktop</a>
-    <a onclick="refreshView()">refresh</a>
+    <a onclick="toggleView('phone')"><i class="fas fa-mobile-alt"></i></a>
+    <a onclick="toggleView('tab')"><i class="fas fa-tablet-alt"></i></a>
+    <a onclick="toggleView('desk')"><i class="fas fa-desktop"></i></a>
+    <a onclick="refreshView()"><i class="fas fa-sync-alt"></i></a>
 </div>
 
 <div class="view-wrapper">
@@ -41,13 +42,18 @@
         height: 40px;
         position: relative;
         background-color: lightgrey;
+        padding-bottom: 4px;
+        line-height: 32px;
     }
 
     #menu a{
         cursor: pointer;
-        padding: 8px 24px;
         background-color: whitesmoke;
-        margin: 0 8px;
+        width: 34px;
+        margin: 4px;
+        border-radius: 4px;
+        line-height: 32px;
+        text-align: center;
     }
     #menu .title{
         padding: 8px;
@@ -57,7 +63,7 @@
         content: '';
         position: absolute;
         display: block;
-        height: 8px;
+        height: 4px;
         width: 100%;
         background: #d3d300;
         background: repeating-linear-gradient(-45deg, #d3d300, #d3d300 12px, black 10px, black 23px);
@@ -74,6 +80,7 @@
         width: 375px;
         transition: all 0.3s ease-out;
         border: 0;
+        box-shadow: 0px 0px 40px -10px rgba(0,0,0,0.75);
     }
 
     #view.phone{
@@ -93,8 +100,9 @@
     }
 
     .view-wrapper{
+        box-shadow: inset 0px 40px 40px -50px rgba(0,0,0,0.75);
         width: 100%;
-        height: calc(100% - 45px);
+        height: calc(100% - 49px);
         overflow-y: auto;
         display: flex;
         justify-content: center;
